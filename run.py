@@ -47,3 +47,8 @@ words = 'clam crab manatee turtle cuttlefish prawn \
         sponge shrimp squid lobster mackerel seal hammerhead \
         sealion marlin pufferfish octopus dolphin sunfish seahorse \
         stringray eagleray whaleshark clownfish starfish toadfish'.split()
+
+def getRandomWord(wordList):
+    # a function that returns a random word from the above list
+    wordIndex = random,randinit(0, len(wordList) -1)
+    return wordList[wordIndex]
