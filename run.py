@@ -127,9 +127,15 @@ while True:
             if foundAllLetters:
                 print('Yes!! The secret word was "' + secretWord + '"! You won!!')
                 gameIsDone = True
-            else:
-                missedLetters = missedLetters + guess
+        else:
+            missedLetters = missedLetters + guess
 
             #check if the player has guessed too many times and lost.
             if len(missedLetter) == len(SUNKEN_SHIP_PICS) - 1:
-                displayBoard
+                displayBoard(missedLetters, correctLetters, secretWord)
+                print('You have run out of guesses!\nAfter ' + 
+                    str(len(missedLetters)) + ' missed guesses and ' +
+                    str(len(correctLetters)) + ' correct guesses, the word was "' +
+                    secretWord + '"')
+                gameIsDone = True
+        
