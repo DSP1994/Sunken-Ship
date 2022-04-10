@@ -1,9 +1,8 @@
 import random
-from pprint import pprint
 SUNKEN_SHIP_PICS = [
     # The capital letters indicate that this is
     # not to be changed, under any circumstances.
-"""
+    """
       /|\
      /_|_\
    ____|____
@@ -43,14 +42,15 @@ SUNKEN_SHIP_PICS = [
 ~~~~~~~~~~~~~~~~~~
 """]
 
-words = 'clam crab manatee turtle cuttlefish prawn \
-        sponge shrimp squid lobster mackerel seal hammerhead \
-        sealion marlin pufferfish octopus dolphin sunfish seahorse \
+words = 'clam crab manatee turtle cuttlefish prawn\
+        sponge shrimp squid lobster mackerel seal hammerhead\
+        sealion marlin pufferfish octopus dolphin sunfish seahorse\
         stringray eagleray whaleshark clownfish starfish toadfish'.split()
+
 
 def getRandomWord(wordList):
     # a function that returns a random word from the above list
-    wordIndex = random,randinit(0, len(wordList) -1)
+    wordIndex = random.randinit(0, len(wordList) -1)
     return wordList[wordIndex]
 
 def diplayBoard(missingLetters, correctLetters, secretWord):
@@ -92,7 +92,7 @@ def getGuess(alreadyGuessed):
 
 def playAgain():
     # Function that returns True if player wants to play again.
-    # otherwise returns as false. 
+    # otherwise returns as false.
     print('Do you want to go again? (yes or no)')
     return input().lower().startswith('y')
 
@@ -138,4 +138,12 @@ while True:
                     str(len(correctLetters)) + ' correct guesses, the word was "' +
                     secretWord + '"')
                 gameIsDone = True
-        
+            
+            #Asking the player if they wish to try again.
+            #(but only if the game is done). 
+            if gameIsDone:
+                if playAgain():
+                    missedLetters = ''
+                    correctLetters = ''
+                    gameIsDone = False
+                    secretWord = getRandomWord(words)
