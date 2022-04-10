@@ -74,4 +74,26 @@ def diplayBoard(missingLetters, correctLetters, secretWord):
         print(letter, end=' ')
     print()
 
-displayBoard()
+def getGuess(alreadyGuessed):
+    # Returns the letter the player guessed. Also ensures
+    # the player enters a single letter, nothing else.
+    while True:
+        print('Guess a letter.')
+        guess = input()
+        guess = guess.lower() # this will turn even an uppercase into lower
+        if len(guess) != 1: #checks if one character long (ie a letter)
+            print('Please enter a single letter')
+        elif guess in alreadyGuessed:
+            print('You have already guessed that letter. Choose again.')
+        elif guess not in 'abcdefghijklmnopqrstuvwxyz':
+            print('Please enter a LETTER.')
+        else:
+            return guess
+
+def playAgain():
+    # Function that returns True if player wants to play again.
+    # otherwise returns as false. 
+    print('Do you want to go again? (yes or no)')
+    return input().lower().startswith('y')
+
+print('S U N K E N S H I P')
