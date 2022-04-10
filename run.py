@@ -111,3 +111,25 @@ gameIsDone = False
 # calls the displayBoard function, giving it three variables
 while True:
     displayBoard(missedLetters, correctLetters, secretWord)
+    #lets the player enter a letter
+    guess = getGuess(missedLetters + correctLetters)
+    if guess in secretWord:
+        correctLetters = correctLetters + guess
+
+        #checking if the player has won, needs to check every letter
+        #in every position to ensure win. ie 1 letter could be in 2
+        #different locations. 
+        foundAllLetters = True
+        for i in range(len(secretWord)):
+            if secretWord[i] not in correctLetters:
+                foundAllLetters = False
+                break
+            if foundAllLetters:
+                print('Yes!! The secret word was "' + secretWord + '"! You won!!')
+                gameIsDone = True
+            else:
+                missedLetters = missedLetters + guess
+
+            #check if the player has guessed too many times and lost.
+            if len(missedLetter) == len(SUNKEN_SHIP_PICS) - 1:
+                displayBoard
