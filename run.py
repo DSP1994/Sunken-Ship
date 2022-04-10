@@ -97,3 +97,8 @@ def playAgain():
     return input().lower().startswith('y')
 
 print('S U N K E N S H I P')
+missedLetters = ''
+correctLetters = ''
+secretWord = getRandomWord(word)
+gameIsDone = False
+
