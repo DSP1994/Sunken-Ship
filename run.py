@@ -96,9 +96,18 @@ def playAgain():
     print('Do you want to go again? (yes or no)')
     return input().lower().startswith('y')
 
+# Is the title of the game
 print('S U N K E N S H I P')
+# will be blank until the player has guessed some letters.
 missedLetters = ''
+# same as above.
 correctLetters = ''
+# won't be displayed to the user
 secretWord = getRandomWord(word)
+# will only be set to true when it's been given a signal by the user
+# that they want to play again.
 gameIsDone = False
 
+# calls the displayBoard function, giving it three variables
+while True:
+    displayBoard(missedLetters, correctLetters, secretWord)
