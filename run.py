@@ -9,38 +9,33 @@ SUNKEN_SHIP_PICS = [
    \_o_o_o_/
 ~~   |       ~~~~~
      t
-""",
-"""
+    """, """
       /|\
      /_|_\
    ____|____
    \_o_o_o_/
 ~~   |       ~~~~~
-""", 
-"""
+    """, """
       /|\
      /_|_\
    ____|____
    \_o_o_o_/
 ~~~         ~~~~~~
-""", 
-"""
+    """, """
       /|\
      /_|_\
    ____|____
 ~~~         ~~~~~~
-""", 
-"""
+    """, """
       /|\
      /_|_\
 ~~~~~     ~~~~~~~~
-""", 
-"""
-      /|\ 
+    """, """
+      /|\
 ~~~~~~   ~~~~~~~~~
-""", """
+    """, """
 ~~~~~~~~~~~~~~~~~~
-"""]
+    """]
 
 words = 'clam crab manatee turtle cuttlefish prawn\
         sponge shrimp squid lobster mackerel seal hammerhead\
@@ -50,10 +45,11 @@ words = 'clam crab manatee turtle cuttlefish prawn\
 
 def getRandomWord(wordList):
     # a function that returns a random word from the above list
-    wordIndex = random.randinit(0, len(wordList) -1)
+    wordIndex = random.randint(0, len(wordList) - 1)
     return wordList[wordIndex]
 
-def diplayBoard(missingLetters, correctLetters, secretWord):
+
+def displayBoard(missedLetters, correctLetters, secretWord):
     print(SUNKEN_SHIP_PICS[len(missedLetters)])
     print()
 
@@ -70,9 +66,10 @@ def diplayBoard(missingLetters, correctLetters, secretWord):
             blanks = blanks[:i] + secretWord[i] + blanks[i+1:]
 
     for letter in blanks:
-        #Shows the secret word with spaces between each letter
+        # Shows the secret word with spaces between each letter
         print(letter, end=' ')
     print()
+
 
 def getGuess(alreadyGuessed):
     # Returns the letter the player guessed. Also ensures
@@ -80,8 +77,8 @@ def getGuess(alreadyGuessed):
     while True:
         print('Guess a letter.')
         guess = input()
-        guess = guess.lower() # this will turn even an uppercase into lower
-        if len(guess) != 1: #checks if one character long (ie a letter)
+        guess = guess.lower()  # this will turn even an uppercase into lower
+        if len(guess) != 1:  # checks if one character long (ie a letter)
             print('Please enter a single letter')
         elif guess in alreadyGuessed:
             print('You have already guessed that letter. Choose again.')
@@ -89,6 +86,7 @@ def getGuess(alreadyGuessed):
             print('Please enter a LETTER.')
         else:
             return guess
+
 
 def playAgain():
     # Function that returns True if player wants to play again.
@@ -99,11 +97,11 @@ def playAgain():
 # Is the title of the game
 print('S U N K E N S H I P')
 # will be blank until the player has guessed some letters.
-missedLetters = ''
+missedLetters = ' '
 # same as above.
-correctLetters = ''
+correctLetters = ' '
 # won't be displayed to the user
-secretWord = getRandomWord(word)
+secretWord = getRandomWord(words)
 # will only be set to true when it's been given a signal by the user
 # that they want to play again.
 gameIsDone = False
@@ -111,39 +109,40 @@ gameIsDone = False
 # calls the displayBoard function, giving it three variables
 while True:
     displayBoard(missedLetters, correctLetters, secretWord)
-    #lets the player enter a letter
+    # lets the player enter a letter
     guess = getGuess(missedLetters + correctLetters)
     if guess in secretWord:
         correctLetters = correctLetters + guess
 
-        #checking if the player has won, needs to check every letter
-        #in every position to ensure win. ie 1 letter could be in 2
-        #different locations. 
+        # checking if the player has won, needs to check every letter
+        # in every position to ensure win. ie 1 letter could be in 2
+        # different locations.
         foundAllLetters = True
         for i in range(len(secretWord)):
             if secretWord[i] not in correctLetters:
                 foundAllLetters = False
                 break
             if foundAllLetters:
-                print('Yes!! The secret word was "' + secretWord + '"! You won!!')
+                print('Yes!! The secret word was "'
+                        + secretWord + '"! You won!')
                 gameIsDone = True
         else:
             missedLetters = missedLetters + guess
 
-            #check if the player has guessed too many times and lost.
-            if len(missedLetter) == len(SUNKEN_SHIP_PICS) - 1:
+            # check if the player has guessed too many times and lost.
+            if len(missedLetters) == len(SUNKEN_SHIP_PICS) - 1:
                 displayBoard(missedLetters, correctLetters, secretWord)
-                print('You have run out of guesses!\nAfter ' + 
+                print('You have run out of guesses!\nAfter ' +
                     str(len(missedLetters)) + ' missed guesses and ' +
-                    str(len(correctLetters)) + ' correct guesses, the word was "' +
-                    secretWord + '"')
+                    str(len(correctLetters)) + ' correct guesses, \
+                    the word was "' + secretWord + '"')
                 gameIsDone = True
-            
-            #Asking the player if they wish to try again.
-            #(but only if the game is done). 
+
+            # Asking the player if they wish to try again.
+            # (but only if the game is done).
             if gameIsDone:
                 if playAgain():
-                    missedLetters = ''
-                    correctLetters = ''
+                    missedLetters = ' '
+                    correctLetters = ' '
                     gameIsDone = False
                     secretWord = getRandomWord(words)
