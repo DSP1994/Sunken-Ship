@@ -97,9 +97,9 @@ def play_again():
 # Is the title of the game
 print('S U N K E N S H I P')
 # will be blank until the player has guessed some letters.
-missed_letters = ' '
+missed_letters = ''
 # same as above.
-correct_letters = ' '
+correct_letters = ''
 # won't be displayed to the user
 secret_word = get_random_word(words)
 # will only be set to true when it's been given a signal by the user
@@ -142,7 +142,9 @@ while True:
             # (but only if the game is done).
             if game_is_done:
                 if play_again():
-                    missed_letters = ' '
-                    correct_letters = ' '
+                    missed_letters = ''
+                    correct_letters = ''
                     game_is_done = False
                     secret_word = get_random_word(words)
+                else:
+                    break
