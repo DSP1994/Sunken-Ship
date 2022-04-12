@@ -91,12 +91,12 @@ def do_you_want_to_play_again():
 
 
 # Is the title of the game
-print('S U N K E N   S H I P')
+print('S U N K E N   S H I P \n')
 
 # friendly introduction to the player
 print("Arrr' ya ready to walk the plank? Do you have what it takes")
-print("to beat the odds and keep your ship afloat?")
-print("Good luck Cap'n!")
+print("to beat the odds and keep your ship afloat? \n")
+print("Good luck Cap'n! \n")
 
 # will be blank until the player has guessed some letters.
 characters_omitted = ''
