@@ -36,6 +36,7 @@ SUNKEN_SHIP_PICS = [
     """, """
 ~~~~~~~~~~~~~~~~~~ """]
 
+
 def welcome_user():
     """
     This function allows user to input their name.
@@ -74,11 +75,11 @@ def game_overview(characters_omitted, characters_found, mystery_string):
         print(letter, end=' ')
     print()
     blanks = '_' * len(mystery_string)
-    for i in range(len(mystery_string)): 
+    for i in range(len(mystery_string)):
         # Replace blanks with correctly guessed letters.
         if mystery_string[i] in characters_found:
             blanks = blanks[:i] + mystery_string[i] + blanks[i+1:]
-    for letter in blanks: 
+    for letter in blanks:
         # Show the secret word with spaces in between each letter.
         print(letter, end=' ')
     print()
@@ -151,7 +152,7 @@ while True:
                 all_characters_guessed = False
                 break
         if all_characters_guessed:
-            print('Yes! The secret word is "' 
+            print('Yes! The secret word is "'
             + mystery_string + '"! You have won!')
             is_sunken_ship_finished = True
     else:
@@ -164,7 +165,7 @@ while True:
               + str(len(characters_found)) + ' correct guesses, the word was "'
               + mystery_string + '"')
             is_sunken_ship_finished = True
-    
+
     # Asking the player if they wish to try again.
     # (but only if the game is done).
     if is_sunken_ship_finished:
