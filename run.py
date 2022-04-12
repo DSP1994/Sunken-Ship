@@ -116,8 +116,8 @@ welcome_user()
 # friendly introduction to the player
 print("\nArrr' ya ready to walk the plank? Do you have what it takes")
 print("to beat the odds and keep your ship afloat? \n")
-print("Your only hints. . . \n")
-print("Arrrr. . . Sea Creatures. . .\n")
+print("Your only hints arrr'. . . \n")
+print("Sea Creatures. . .\n")
 print("Good luck Cap'n!")
 
 # will be blank until the player has guessed some letters.
