@@ -1,4 +1,6 @@
 import random
+
+
 SUNKEN_SHIP_PICS = [
     # The capital letters indicate that this is
     # not to be changed, under any circumstances.
@@ -43,10 +45,8 @@ def welcome_user():
     letters only, no numbers
     """
     username = None
-
     while True:
         username = input('Enter your name\n')
-
         if not username.isalpha():
             print('Username must be alphabets only')
             continue
@@ -62,12 +62,13 @@ words = 'clam crab manatee turtle cuttlefish prawn\
 
 
 def get_random_word(list_of_words):
-    # a function that returns a random word from the above list
+    """ a function that returns a random word from the above list """
     letter_index = random.randint(0, len(list_of_words) - 1)
     return list_of_words[letter_index]
 
 
 def game_overview(characters_omitted, characters_found, mystery_string):
+    """ function that gives the game overview to console """
     print(SUNKEN_SHIP_PICS[len(characters_omitted)])
     print()
     print('Missed letters:', end=' ')
@@ -75,10 +76,10 @@ def game_overview(characters_omitted, characters_found, mystery_string):
         print(letter, end=' ')
     print()
     blanks = '_' * len(mystery_string)
-    for i in range(len(mystery_string)):
+    for index, _ in enumerate(mystery_string):
         # Replace blanks with correctly guessed letters.
-        if mystery_string[i] in characters_found:
-            blanks = blanks[:i] + mystery_string[i] + blanks[i+1:]
+        if mystery_string[index] in characters_found:
+            blanks = blanks[:index] + mystery_string[index] + blanks[index+1:]
     for letter in blanks:
         # Show the secret word with spaces in between each letter.
         print(letter, end=' ')
@@ -86,32 +87,35 @@ def game_overview(characters_omitted, characters_found, mystery_string):
 
 
 def recieve_player_guess(previously_recieved):
-    # Returns the letter the player guessed. Also ensures
-    # the player enters a single letter, nothing else.
+    """ Returns the letter the player guessed. Also ensures
+    the player enters a single letter, nothing else.
+    """
     while True:
         print('Guess a letter.')
-        guess = input()
-        guess = guess.lower()  # this will turn even an uppercase into lower
-        if len(guess) != 1:  # checks if one character long (ie a letter)
+        guessed = input()
+        # this will turn even an uppercase into lower
+        guessed = guessed.lower()
+        # checks if one character long (ie a letter)
+        if len(guessed) != 1:
             print('Please enter a single letter.')
-        elif guess in previously_recieved:
+        elif guessed in previously_recieved:
             print('You have already guessed that letter. Choose again.')
-        elif guess not in 'abcdefghijklmnopqrstuvwxyz':
+        elif guessed not in 'abcdefghijklmnopqrstuvwxyz':
             print('Please enter a LETTER.')
         else:
-            return guess
+            return guessed
 
 
 def do_you_want_to_play_again():
-    # Function that returns True if player wants to play again.
-    # otherwise returns as false.
+    """ Function that returns True if player wants to play again.
+    otherwise returns as false.
+    """
     print('Do you want to play again? (yes or no)')
     return input().lower().startswith('y')
 
 
 # Is the title of the game
 print('S U N K E N   S H I P \n')
-
 welcome_user()
 
 # friendly introduction to the player
@@ -142,18 +146,16 @@ while True:
     guess = recieve_player_guess(characters_omitted + characters_found)
     if guess in mystery_string:
         characters_found = characters_found + guess
-
         # checking if the player has won, needs to check every letter
         # in every position to ensure win. ie 1 letter could be in 2
         # different locations.
         all_characters_guessed = True
-        for i in range(len(mystery_string)):
-            if mystery_string[i] not in characters_found:
+        for index, _ in enumerate(mystery_string):
+            if mystery_string[index] not in characters_found:
                 all_characters_guessed = False
                 break
         if all_characters_guessed:
-            print('Yes! The secret word is "'
-            + mystery_string + '"! You have won!')
+            print(f'Yes! The secret word is {mystery_string}! You have won!')
             is_sunken_ship_finished = True
     else:
         characters_omitted = characters_omitted + guess
@@ -161,11 +163,12 @@ while True:
         if len(characters_omitted) == len(SUNKEN_SHIP_PICS) - 1:
             game_overview(characters_omitted, characters_found, mystery_string)
             print('You have run out of guesses!\nAfter '
-              + str(len(characters_omitted)) + ' missed guesses and '
-              + str(len(characters_found)) + ' correct guesses, the word was "'
-              + mystery_string + '"')
+                  + str(len(characters_omitted))
+                  + ' missed guesses and '
+                  + str(len(characters_found))
+                  + ' correct guesses, the word was "'
+                  + mystery_string + '"')
             is_sunken_ship_finished = True
-
     # Asking the player if they wish to try again.
     # (but only if the game is done).
     if is_sunken_ship_finished:

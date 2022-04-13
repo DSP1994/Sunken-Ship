@@ -121,11 +121,16 @@ Congratulates! You beat the odds! You'll be able to try the game again, or simpl
 
     ![Missing Doc](images/missing-doc.png)
 
+    - Conforming UPPER_CASE name stlying
+
+    ![Upper Case](images/upper_case.png)
+
 - Working through this methodically;
-    - The code runs perfectly fine without the indents, however I believe that this is more for the coders experience, rather than affecting the user.
+    - Though the code worked perfectly fine without the correct indents, I went ahead and split the code up further within the print function. It was not indented correctly due to the line being too long. However, one way that I could try and fix this in a future project, would be to use an 'f string' rather than a simple print function.
     - The odd backslashes '\' is due to the keyboard design of the sinking ship, unfortunately there is not much I can do about this error.
     - Trailing whitespaces were easy enough to fix, I headed over to each line and removed the aforementioned 'whitespace'.
     - Unfortunately for this issue, I was unable to fix it. If I copied my code from one run.py to another it seemed to fix the issue, however, when removing the old run.py file, this problem would return. Very odd issue, that google could not help with unfortunately!
+    - This error kept appearing, and after talking to my [mentor](#credits) about it, he believes its not an error, as these are functions that change. So I am unable to find a work around for this bug.
 ***
 
 ## **Validator Testing**
