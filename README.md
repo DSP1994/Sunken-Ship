@@ -95,9 +95,9 @@ Congratulates! You beat the odds! You'll be able to try the game again, or simpl
 - The majority of my testing was done as I was writing the code, and flicking through the 'problems' section of the terminal within gitpod.
 - Once my program was deployed I used the Heroku app function to input correct and incorrect data to ensure I was recieving the outcome I expected/wanted.
 - Since deploying the code/program, I have asked some friends and family members to try the game and inform me of any bugs or bad user experiences and here is what they've had to say;
-    - 'I like the look of the ship sinking. It looks really simple with the keyboard design but also very creative. I like the details of the hints and and personalized commands. Like writing your name, and getting feedback when you type something wrong, or guess the same letter twice. Unfortunately on a mobile device, it is a little hard to use.'
+    - 'I like the look of the ship sinking. It looks really simple with the keyboard design but also very creative. I like the details of the hints and and personalized commands. Like writing your name, and getting feedback when you type something wrong, or guess the same letter twice.'
     - 'It took me a second to figure out it was a rendition of hangman! But it was very easy to pick up, and the ship looks cool!'
-    - 
+    - 'I thought this was really well made and really easy to use! I tried on my phone and computer, and found that unfortunately on my phone, it was a little hard to use, but worked great on my computer!'
 ***
 
 ## **Accessibility**
@@ -168,6 +168,7 @@ In order to complete this project, and to find ways to improve myself, I used th
 - Invent with Python.
 - Kylie Ying on YouTube for a tutorial on Hangman (which I later adapted to my own rendition).
 - Tech With Mike who is also on YouTube for further help.
+- Along with Programming With Mosh for hint and tips.
 ***
 
 ## **Special Thanks**
